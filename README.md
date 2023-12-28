@@ -1,2 +1,2 @@
 # gameOfLife
-Simple game of life for practice
+Simple implementation of Conway's game of life

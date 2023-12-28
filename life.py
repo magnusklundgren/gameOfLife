@@ -21,11 +21,12 @@ def loadBoardState(file):
     return board
 
 def printBoard(board):
-    print("-" * len(board[0]))
+    topBottom = " " + "-" * len(board[0])
+    print(topBottom)
     for row in board:
         prettyRow  = prettyPrintRow(row)
         print(prettyRow)
-    print("-" * len(row))
+    print(topBottom)
     print("\n")
 
 def prettyPrintRow(row):
@@ -88,12 +89,15 @@ def gameOfLife(board):
     while True:
         board = nextState(board)
         printBoard(board)
-        time.sleep(2)
+        time.sleep(1)
 
 
 
 if __name__ == "__main__":
     # board = setRandomBoard(createBoard(40,20))
-    board = loadBoardState("./toad.txt")
+    # board = loadBoardState("./toad.txt")
+    # board = loadBoardState("./beacon.txt")
+    board = loadBoardState("./blinker.txt")
+
 
     gameOfLife(board)

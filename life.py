@@ -12,6 +12,14 @@ def setRandomBoard(board):
         res.append(line)
     return res
 
+def loadBoardState(file):
+    board = []
+    with open(file) as f:
+        for line in f:
+            row = line.strip()
+            board.append([int(x) for x in row])
+    return board
+
 def printBoard(board):
     print("-" * len(board[0]))
     for row in board:
@@ -75,15 +83,17 @@ def getNeighbours(x, y, board):
     return neighbours
 
 
-def gameOfLife(x, y):
-    board = setRandomBoard(createBoard(x,y))
+def gameOfLife(board):
     printBoard(board)
     while True:
         board = nextState(board)
         printBoard(board)
-        time.sleep(3)
+        time.sleep(2)
 
 
 
 if __name__ == "__main__":
-    gameOfLife(40,20)
+    # board = setRandomBoard(createBoard(40,20))
+    board = loadBoardState("./toad.txt")
+
+    gameOfLife(board)

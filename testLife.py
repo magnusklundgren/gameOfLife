@@ -11,6 +11,14 @@ testState_nextState = [[0,0,0],
                        [1,1,0],
                        [0,0,0]]
 
+toadBoard = [[0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,1,1,1,0],
+            [0,1,1,1,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]]
+
+
 def createTestBoard():
     return life.createBoard(3,3)
 
@@ -33,7 +41,13 @@ def test_nextState():
     assert(board == testState_nextState)    
     print("Next state passed")
 
+def test_loadBoard():
+    board = life.loadBoardState("./toad.txt")
+    assert(board == toadBoard)
+    print("Load board passed")
+
 if __name__ == "__main__":
     test_CreateBoard()
     test_getNeighbors()
     test_nextState()
+    test_loadBoard()
